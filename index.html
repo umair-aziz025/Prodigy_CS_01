@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CipherLock - Text Encryption Tool</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="description" content="Modern Caesar Cipher encryption and decryption tool with responsive design">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-shield-alt"></i>
+                    <h1>CipherLock</h1>
+                </div>
+                <p class="subtitle">Text Encryption & Decryption Made Simple</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Control Panel -->
+            <section class="control-panel">
+                <div class="operation-selector">
+                    <label class="operation-label">Operation:</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="operation" value="encrypt" checked>
+                            <span class="radio-custom"></span>
+                            <i class="fas fa-lock"></i>
+                            Encrypt
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="operation" value="decrypt">
+                            <span class="radio-custom"></span>
+                            <i class="fas fa-unlock"></i>
+                            Decrypt
+                        </label>
+                    </div>
+                </div>
+
+                <div class="shift-selector">
+                    <label for="shiftValue" class="shift-label">
+                        Shift Value: <span class="shift-display">3</span>
+                    </label>
+                    <div class="shift-input-group">
+                        <input type="range" id="shiftSlider" min="1" max="25" value="3" class="shift-slider">
+                        <input type="number" id="shiftNumber" min="1" max="25" value="3" class="shift-number">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Input/Output Section -->
+            <section class="io-section">
+                <div class="input-panel">
+                    <div class="panel-header">
+                        <h3><i class="fas fa-edit"></i> Input Text</h3>
+                        <button class="clear-btn" id="clearInput" title="Clear input">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <textarea 
+                        id="inputText" 
+                        placeholder="Enter your text here to encrypt or decrypt..."
+                        rows="8"
+                        maxlength="10000"
+                    ></textarea>
+                    <div class="char-counter">
+                        <span id="charCount">0</span> / 10000 characters
+                    </div>
+                </div>
+
+                <div class="output-panel">
+                    <div class="panel-header">
+                        <h3><i class="fas fa-key"></i> Result</h3>
+                        <button class="copy-btn" id="copyResult" title="Copy to clipboard">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                    <div id="outputText" class="output-text">
+                        Your encrypted/decrypted text will appear here...
+                    </div>
+                    <div class="result-info">
+                        <span class="operation-type" id="operationType">Ready to encrypt</span>
+                        <span class="processing-time" id="processingTime"></span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Info Section -->
+            <section class="info-section">
+                <div class="info-card">
+                    <h3><i class="fas fa-info-circle"></i> How it works</h3>
+                    <p>
+                        The Caesar Cipher shifts each letter in your text by a fixed number of positions in the alphabet. 
+                        For example, with a shift of 3, 'A' becomes 'D', 'B' becomes 'E', and so on.
+                    </p>
+                </div>
+                
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <i class="fas fa-bolt"></i>
+                        <h4>Real-time Processing</h4>
+                        <p>Instant encryption as you type</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h4>Responsive Design</h4>
+                        <p>Works on all devices</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <h4>Secure & Private</h4>
+                        <p>All processing is local</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-cogs"></i>
+                        <h4>Customizable</h4>
+                        <p>Adjustable shift values</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p>Made with ❤️ by Umair</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/umairaziz001/" target="_blank" title="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/umair-aziz025/" target="_blank" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://umairaziz-cyber-portfolio.vercel.app/" target="_blank" title="Portfolio">
+                        <i class="fas fa-globe"></i>
+                    </a>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Toast Notification -->
+        <div id="toast" class="toast">
+            <i class="fas fa-check-circle"></i>
+            <span id="toastMessage">Text copied to clipboard!</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
