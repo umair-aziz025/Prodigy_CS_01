@@ -230,6 +230,9 @@ class CaesarCipher {
     showToast(message, type = 'success') {
         this.toastMessage.textContent = message;
         
+        // Show the toast first
+        this.toast.style.display = 'flex';
+        
         // Update toast appearance based on type
         this.toast.className = 'toast';
         this.toast.classList.add('show');
@@ -247,6 +250,10 @@ class CaesarCipher {
         // Hide toast after 3 seconds
         setTimeout(() => {
             this.toast.classList.remove('show');
+            // Hide completely after animation
+            setTimeout(() => {
+                this.toast.style.display = 'none';
+            }, 300);
         }, 3000);
     }
 
